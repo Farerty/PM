@@ -30,9 +30,9 @@ namespace ConsoleApp1
             {
                 for (int i = 0; i < size; i++)
                 {
-                    Console.WriteLine("Введите название дисциплины"+ ": "+i);
+                    Console.WriteLine("Введите название дисциплины "+i+ ": ");
                     sub.name = Convert.ToString(Console.ReadLine());
-                    Console.WriteLine("Введите фамилию преподавателя" + ": " + i);
+                    Console.WriteLine("Введите фамилию преподавателя "  + i+ ": ");
                     sub.famprep = Convert.ToString(Console.ReadLine());
                     Console.WriteLine("Введите семестр: ");
                     sub.semestr = Convert.ToInt32(Console.ReadLine());
@@ -46,16 +46,20 @@ namespace ConsoleApp1
         {
             try
             {
-                StreamWriter str = new StreamWriter("Sinus.txt");
-                for (int i = 0; i < mas.Length; i++)
+                string path = @"D:\Users\stu-pksp119\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\Sinus.txt";
+                using (StreamWriter writer = new StreamWriter(path, false))
                 {
-                    str.WriteLine(mas[i]);
+                    for (int i = 0; i < mas.Length; i++)
+                    {
+                        writer.WriteLine(mas[i].name +" "+ mas[i].famprep +" "+ mas[i].semestr);
+                    }
+                    writer.Close();
                 }
-                str.Close();
+                
             }
             catch(Exception ex) { Console.WriteLine(ex.ToString()); }
         }
-
+        
         public void sortVoz()
         {
             try
@@ -63,7 +67,7 @@ namespace ConsoleApp1
                 Subject s;
                 for (int i = 0; i < mas.Length - 1; i++)
                     for (int j = i; j >= 0; j--)
-                        if (String.Compare(mas[j].name, mas[j + 1].name) > 0 && mas[j].semestr > mas[j + 1].semestr) // функция Compare()
+                        if (String.Compare(mas[j].name, mas[j + 1].name) > 0 || mas[j].semestr > mas[j + 1].semestr) // функция Compare()
                         {
                             // поменять значения местами
                             s = mas[j];
