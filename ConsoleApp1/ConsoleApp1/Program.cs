@@ -3,18 +3,20 @@ using System.IO;
 
 namespace ConsoleApp1
 {
-    struct Subjet
+    struct Subject
     {
-        string name;
-        string famprep;
-        int semestr;
+        public string name;
+        public string famprep;
+        public int semestr;
     };
-    class PlanControl
+     class PlanControl
     {
         int[] mas;
-        PlanControl(int size)
+        Subject sub = new Subject();
+        public PlanControl(int size)
         {
             mas = new int[size];
+            
         }
         public void Save()
         {
@@ -28,7 +30,7 @@ namespace ConsoleApp1
 
         public void sortVoz()
         {
-            for(int)
+            //for(int)
             //сортир по семестру и по названию
         }
     }
@@ -36,6 +38,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Введите размер массива: ");
+            int size = Convert.ToInt32(Console.ReadLine());
+            PlanControl pc = new PlanControl(size);
             
         }
     }
